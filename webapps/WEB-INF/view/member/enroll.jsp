@@ -26,6 +26,34 @@
 	</section>
 
 
+<script>
+     $("#dupId").click(checkDupId);
+     function checkDupId(){
+    	 $.ajax({
+    		 url:"<%=request.getContextPath()%>/dupid.lo"
+    		 , type:"post"
+    		 , async:false
+    		 , data: {id: $("input").first().val() }  //인풋박스에 입력한 id값 가져오기
+    		 , success: function(result) {
+    			 console.log(result);
+    			 if(result==1) {
+    				 $("#dupId").next().html("중복아이디가 있습니다.");
+    				  $("#dupId").next().css("color","red");
+    			 } else  { $("#dupId").next().html("사용가능 아이디입니다.");
+    			         $("#dupId").next().css("color","blue");
+    		     }
+    		 }
+    		 ,error: function(request, status, error) {
+    			 alert(request.status);
+    		 }
+    	 });
+    	 
+     }
+     
+     
+</script>
+
+
 
 </body>
 </html>
