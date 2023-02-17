@@ -15,6 +15,7 @@
     <c:if test="${ not empty lgnss}">
    		 <button class="btn myinfo">내정보보기</button>
     </c:if>
+    <jsp:include page="/WEB-INF/view/board/boardlist.jsp"></jsp:include>
     
     <script>
        $(".btn.login").on("click", handlerClickBtnLogin);
@@ -32,6 +33,7 @@
          } 
         function handlerClickBtnLogout() {
          	console.log("btnLogout 눌림");
+         	 location.href="<%=request.getContextPath()%>/logout";
          } 
        
      

@@ -16,7 +16,7 @@
 	     <br>
 	     pw: <input type="password" name="passwd">
 	     <br>
-	     <button type="submit">로그인하기</button>
+	     <button type="submit" class="btn login">로그인하기</button>
 	     <button type="button" class="btn enroll">회원가입</button>
 	    </form>
     </section>
@@ -26,6 +26,16 @@
           function  handlerClickBtnEnroll() {
         	  console.log("btnEnroll 눌림");
         	  location.href="<%=request.getContextPath()%>/enroll";
+        	  
+         }
+    
+    </script>
+    
+        <script>
+          $(".btn.login").on("click",handlerClickBtnLogin);
+          function  handlerClickBtnLogin() {
+        	  console.log("login 눌림");
+        	  location.href="<%=request.getContextPath()%> + "/";
         	  
          }
     
