@@ -1,15 +1,29 @@
 package kh.board.model.servicce;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
 
 import kh.board.model.dao.BoardDao;
 import kh.board.model.vo.BoardVo;
 import kh.common.jdbc.JDBCTemplate;
 
-public class BoardServiece {
+public class BoardService {
 	
-	public List<BoardVo> getBoardList() {
+	public int getCountBoard() {
+		
+		int result = 0;
+		Connection conn = JDBCTemplate.getConnection();
+		result = new BoardDao().getCountBoard(conn);
+		System.out.println("srv" + result);
+		JDBCTemplate.close(conn);
+		return result;
+	}
+	
+	
+	
+	public List<BoardVo> getBoardList(int srnum, int ernum) {
 		List<BoardVo> result = null;
 		Connection conn = JDBCTemplate.getConnection();
 		result = new BoardDao().getBoardList(conn);
@@ -17,4 +31,9 @@ public class BoardServiece {
 		JDBCTemplate.close(conn);
 		return result;
 	}
+	
+	
+	
+	
+	
 }
